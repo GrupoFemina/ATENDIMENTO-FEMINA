@@ -1,0 +1,2 @@
+# ATENDIMENTO-FEMINA
+Mensagens Padronizadas
