@@ -11,3 +11,168 @@
   <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quadro VDF - Atendimento</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f5f7;
+    }
+    header {
+      background-color: #026aa7;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .board {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 20px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+    .column {
+      background-color: #ebecf0;
+      border-radius: 6px;
+      padding: 10px;
+      min-width: 280px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+    .column h2 {
+      font-size: 18px;
+      margin-top: 0;
+    }
+    .card {
+      background-color: white;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Quadro VDF - Atendimento e Processos</h1>
+  </header>
+
+  <main class="board">
+    <div class="column">
+      <h2>Cadastro</h2>
+      <div class="card">*CADASTRO REVENDEDOR*
+*IR - INTENÇÃO DE REVENDA*
+
+*NOME COMPLETO:*
+*CPF:*
+*BAIRRO:*
+*TELEFONE:*</div>
+      <div class="card">CADASTRO NOVO
+ATIVAÇÃO: PEDIDO EM ANEXO
+FORMA DE PAGAMENTO: BOLETO 3X
+ENTREGA: NO ENDEREÇO DO RE
+
+ANEXOS:
+- PRINT DA ALOCAÇÃO
+- PRINT APP
+- PRINT GERA
+- PEDIDO</div>
+      <div class="card">TRANSFERÊNCIA
+CIDADE PALHOÇA / SC CÓDIGO 6547652 DEBORA MONTEIRO CHAVES
+
+TRANSFERÊNCIA DE CADASTRO
+ATIVAÇÃO: PEDIDO EM ANEXO
+FORMA DE PAGAMENTO: BOLETO 3X
+ENTREGA: NO ENDEREÇO DO RE</div>
+      <div class="card">AUTO ATIVAÇÃO - APP
+NUMERO DO PEDIDO: XXX.XXX.XXX FAVOR ADICIONAR NO MEU RANKING CICLO 8</div>
+    </div>
+
+    <div class="column">
+      <h2>Atendimento</h2>
+      <div class="card">CAR - ATENDIMENTO
+Atendimento de segunda a sexta, das 8h às 20h. Sábado, das 9h às 16h.
+Whatsapp: (41) 8735-7095
+Telefone: 0800-729-9050</div>
+      <div class="card">ATENDIMENTO - RE ATIVO
+CÓD NOME: [INFORMAR O CÓD + NOME]
+DESCRIÇÃO DO ATENDIMENTO: [DESCREVER A NECESSIDADE DO R.E]
+PROMOTORA: [@marcar A ALOCAÇÃO]</div>
+      <div class="card">ATENDIMENTO - REATIVAÇÃO
+CÓD NOME: [INFORMAR O CÓD + NOME]
+CPF:
+FONE:</div>
+    </div>
+
+    <div class="column">
+      <h2>Pedidos e Ocorrências</h2>
+      <div class="card">PEDIDO COM RETIRADA AGENDADA
+📦 NÃO CANCELAR 📦
+Nº PEDIDO: [XXX]
+CÓD. REV.: [CÓD + NOME RE]
+DATA DO PEDIDO: [XX / XX / XX]
+DATA RETIRAR: [DATA DO PEDIDO + 2 DIAS ÚTEIS]</div>
+      <div class="card">OCORRÊNCIA DE PRODUTO
+(Retirar ocorrência de estoque)
+CÓD. PRODUTO1:
+CÓD. PRODUTO2:
+CÓD. PRODUTO3:</div>
+    </div>
+
+    <div class="column">
+      <h2>Documentação</h2>
+      <div class="card">TRANSFERÊNCIA DE ENDEREÇO
+📌 DOCUMENTAÇÃO NECESSÁRIA
+- RG/CNH frente e verso
+- Selfie com documento
+- Comprovante de endereço
+- Carta a próprio punho
+
+Enviar para:
+Joinville: admjoinville@grupofemina.com.br
+Florianópolis: admflorianopolis@grupofemina.com.br</div>
+      <div class="card">CARTA DE AUTODECLARAÇÃO DE ENDEREÇO
+"Eu, [Seu Nome], portador do RG nº [Seu RG] e CPF nº [Seu CPF]..."</div>
+      <div class="card">CARTA DE CORREÇÃO
+ASSUNTO: Carta de Correção - PEDIDO XXX.XXX.XXX
+Motivo: [Descrever]
+Documentos:
+- Print da conversa
+- Comprovante atualizado
+- Print da alteração no GERA</div>
+    </div>
+
+    <div class="column">
+      <h2>Cancelamento e Pagamentos</h2>
+      <div class="card">CANCELAMENTO DE PEDIDO
+CÓD/NOME:
+Nº DO PEDIDO:
+MOTIVO:
+ANEXAR PRINTS (conversa com RE, etc)
+ADM: @mencionar gerente ADM, loja e estoque</div>
+      <div class="card">PIX - JOINVILLE
+ASSUNTO: Confirmação de PIX R$ [VALOR]
+CP: 23431 Femina Sul
+FORMA DE PAGAMENTO: PIX
+PEDIDO: [N° DO PEDIDO]
+Entrega ou Retirada</div>
+      <div class="card">PIX - FLORIANÓPOLIS
+CP: 20753 Vdf Femina
+FORMA DE PAGAMENTO: PIX
+PEDIDO: [N° DO PEDIDO]</div>
+      <div class="card">PIX - RIO DO SUL
+CP: 24125 Vd Rio do Sul
+FORMA DE PAGAMENTO: PIX
+PEDIDO: [N° DO PEDIDO]</div>
+    </div>
+  </main>
+</body>
+</html>
