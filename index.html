@@ -66,7 +66,7 @@
 <body>
 
   <header>
-    <img src="logo-femina.png.png" alt="Logo Femina">
+    <img src="logo.femina.png" alt="Logo Femina">
     <h1>VDF - Atendimento</h1>
   </header>
 
@@ -126,7 +126,6 @@
 
     const boardEl = document.getElementById("board");
 
-    // Agrupar cartões por lista
     const listsMap = {};
     for (const [listId, listName] of Object.entries(boardData.lists)) {
       listsMap[listId] = {
@@ -141,7 +140,6 @@
       }
     }
 
-    // Criar HTML dinamicamente
     for (const listId in listsMap) {
       const list = listsMap[listId];
       const listEl = document.createElement("div");
