@@ -1,3 +1,5 @@
+<!-- substitua seu HTML anterior por este -->
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -91,125 +93,136 @@
       background-color: #4a148c;
       transform: scale(1.05);
     }
+    .card.expanded .toggle-button::after {
+      content: '▲';
+    }
     .toggle-button::after {
       content: '▼';
       margin-left: 6px;
       font-size: 10px;
     }
-    .card.expanded .toggle-button::after {
-      content: '▲';
-    }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="logo.femina.png" alt="Logo Femina">
-    <h1>ATENDIMENTO PADRÃO FEMINA</h1>
-  </header>
+<header>
+  <img src="logo.femina.png" alt="Logo Femina">
+  <h1>ATENDIMENTO PADRÃO FEMINA</h1>
+</header>
 
-  <div class="board" id="board"></div>
+<div class="board" id="board"></div>
 
-  <script>
-    const boardData = {
-      lists: {
-        "683615767be3d4dd7675250e": "CADASTROS - EXTERNAS",
-        "683615767be3d4dd7675250f": "FORÇA DE VENDAS",
-        "683616ef6cc0c8d06e9b1dcc": "ADMINISTRATIVO",
-        "683615767be3d4dd7675250d": "ATENDIMENTO - LOJA",
-        "estoque_coluna_001": "ESTOQUE"
-      },
-      cards: [
-        {
-          name: "CADASTRO NOVO",
-          desc: "<strong>Ativação:</strong> Via pedido.\n<strong>Pagamento:</strong> Boleto 3x.\n<strong>Entrega:</strong> endereço do RE.",
-          idList: "683615767be3d4dd7675250e"
-        },
-        {
-          name: "AUTO ATIVAÇÃO",
-          desc: "<strong>NºPedido:</strong> XXX.XXX.XXX\n<strong>Ranking:</strong> Adicionar ao ciclo 8.",
-          idList: "683615767be3d4dd7675250e"
-        },
-        {
-          name: "PEDIDO COM RETIRADA AGENDADA",
-          desc: "<strong>Nº PEDIDO:</strong> [XXX]\n<strong>CÓD. REV.:</strong> [CÓD + NOME RE]\n<strong>DATA RETIRAR:</strong> [pedido + 2 dias úteis]",
-          idList: "estoque_coluna_001"
-        },
-        {
-          name: "ATENDIMENTO - R.E ATIVO",
-          desc: "<strong>CÓD NOME:</strong> [INFORMAR]\n<strong>Descrição:</strong> [NECESSIDADE]\n<strong>Promotora:</strong> [@marcar]",
-          idList: "683615767be3d4dd7675250f"
-        },
-        {
-          name: "RE-ATIVAÇÃO",
-          desc: "<strong>Reativação:</strong> Informações do RE para nova ativação.\n<strong>Alocação:</strong> marcar.",
-          idList: "683615767be3d4dd7675250f"
-        },
-        {
-          name: "CAR - ATENDIMENTO",
-          desc: "Atendimento de segunda a sexta, das 8h às 20h. Sábado, das 9h às 16h.\nWhatsapp: (41) 8735-7095\nTelefone: 0800-729-9050\nLigação gratuita de qualquer lugar do país tanto de telefone fixo quanto de celular",
-          idList: "683616ef6cc0c8d06e9b1dcc"
-        },
-        {
-          name: "TRANSFERÊNCIA DE ENDEREÇO - DOCUMENTAÇÃO NECESSÁRIA",
-          desc: "*Foto do documento (RG/CNH) frente e verso,\n*Selfie com o documento junto.\n*Comprovante de endereço atualizado e em seu nome (ou foto do titular com o comprovante).\n*Carta a próprio punho informando que está residindo no endereço atual.\n*ENVIAR A DOCUMENTAÇÃO PARA O E-MAIL:\nFLORIANÓPOLIS: *admflorianopolis@grupofemina.com.br*\nJOINVILLE: *admjoinville@grupofemina.com.br*\nRIO DO SUL: *admriodosul@grupofemina.com.br*",
-          idList: "683616ef6cc0c8d06e9b1dcc"
-        },
-        {
-          name: "CARTA DE AUTODECLARAÇÃO DE ENDEREÇO",
-          desc: "Eu, [Seu Nome Completo], portador do RG nº [Seu RG] e CPF nº [Seu CPF], declaro que resido atualmente no endereço residencial:\nRua: [Nome da Rua]\nNúmero: [Número da Casa/Apartamento]\nBairro: [Nome do Bairro]\nCidade: [Nome da Cidade]\nCEP: [CEP]\nDeclaro, para os devidos fins, que as informações prestadas são verdadeiras.\n\nAssinatura: _______________________________\nNome Completo:",
-          idList: "683616ef6cc0c8d06e9b1dcc"
-        },
-        {
-          name: "TRANSFERIDO",
-          desc: "Olá,\n\nInformamos que seu endereço foi atualizado com sucesso. Agora, o próximo passo é entrar em contato com a VD+ (Venda Direta) da sua localidade para realizar o desbloqueio e a atualização completa do seu cadastro como Revendedor(a) O Boticário.\n\nEnquanto isso, seu cadastro ficará bloqueado temporariamente até que essa etapa seja concluída.\n\nAgradecemos pela parceria até aqui e boas vendas. 💜\n\nAtenciosamente,",
-          idList: "683616ef6cc0c8d06e9b1dcc"
-        }
-      ]
+<script>
+const boardData = {
+  lists: {
+    "683615767be3d4dd7675250e": "CADASTROS - EXTERNAS",
+    "683615767be3d4dd7675250f": "FORÇA DE VENDAS",
+    "683616ef6cc0c8d06e9b1dcc": "ADMINISTRATIVO",
+    "683615767be3d4dd7675250d": "ATENDIMENTO - LOJA",
+    "estoque_coluna_001": "ESTOQUE"
+  },
+  cards: [
+    {
+      name: "CADASTRO NOVO",
+      desc: "<strong>Ativação:</strong> Via pedido.\n<strong>Pagamento:</strong> Boleto 3x.\n<strong>Entrega:</strong> endereço do RE.",
+      idList: "683615767be3d4dd7675250e"
+    },
+    {
+      name: "TRANSFERÊNCIA DE CADASTRO",
+      desc: "<strong>ACOLHIMENTO</strong>",
+      idList: "683615767be3d4dd7675250e"
+    },
+    {
+      name: "REATIVAÇÃO - CESSADO",
+      desc: "<strong>ATIVAÇÃO:</strong> Pedido em Anexo\n<strong>FORMA DE PAGAMENTO:</strong> Boleto 3x \n<strong>ENTREGA:</strong> No endereço do RE\n<strong>CUPOM:</strong> Inserir cupom vigente",
+      idList: "683615767be3d4dd7675250e"
+    },
+    {
+      name: "AUTO REATIVAÇÃO",
+      desc: "<strong>RE realizou pedido pelo APP ou em Loja</strong>\n\n<strong>Nº PEDIDO:</strong> XXX.XXX.XXX\n<strong>Ranking:</strong> Adicionar ao ciclo XX",
+      idList: "683615767be3d4dd7675250e"
+    },
+    {
+      name: "PEDIDO COM RETIRADA AGENDADA",
+      desc: "<strong>Nº PEDIDO:</strong> [XXX]\n<strong>CÓD. REV.:</strong> [CÓD + NOME RE]\n<strong>DATA RETIRAR:</strong> [pedido + 2 dias úteis]",
+      idList: "estoque_coluna_001"
+    },
+    {
+      name: "ATENDIMENTO - R.E ATIVO",
+      desc: "<strong>CÓD NOME:</strong> [INFORMAR]\n<strong>Descrição:</strong> [NECESSIDADE]\n<strong>Promotora:</strong> [@marcar]",
+      idList: "683615767be3d4dd7675250f"
+    },
+    {
+      name: "RE-ATIVAÇÃO",
+      desc: "<strong>Reativação:</strong> Informações do RE para nova ativação.\n<strong>Alocação:</strong> marcar.",
+      idList: "683615767be3d4dd7675250f"
+    },
+    {
+      name: "CAR - ATENDIMENTO",
+      desc: "Atendimento de segunda a sexta, das 8h às 20h. Sábado, das 9h às 16h.\nWhatsapp: (41) 8735-7095\nTelefone: 0800-729-9050\nLigação gratuita de qualquer lugar do país tanto de telefone fixo quanto de celular",
+      idList: "683616ef6cc0c8d06e9b1dcc"
+    },
+    {
+      name: "TRANSFERÊNCIA DE ENDEREÇO - DOCUMENTAÇÃO NECESSÁRIA",
+      desc: "*Foto do documento (RG/CNH) frente e verso,\n*Selfie com o documento junto.\n*Comprovante de endereço atualizado e em seu nome (ou foto do titular com o comprovante).\n*Carta a próprio punho informando que está residindo no endereço atual.\n*ENVIAR A DOCUMENTAÇÃO PARA O E-MAIL:\nFLORIANÓPOLIS: *admflorianopolis@grupofemina.com.br*\nJOINVILLE: *admjoinville@grupofemina.com.br*\nRIO DO SUL: *admriodosul@grupofemina.com.br*",
+      idList: "683616ef6cc0c8d06e9b1dcc"
+    },
+    {
+      name: "CARTA DE AUTODECLARAÇÃO DE ENDEREÇO",
+      desc: "Eu, [Seu Nome Completo], portador do RG nº [Seu RG] e CPF nº [Seu CPF], declaro que resido atualmente no endereço residencial:\nRua: [Nome da Rua]\nNúmero: [Número da Casa/Apartamento]\nBairro: [Nome do Bairro]\nCidade: [Nome da Cidade]\nCEP: [CEP]\nDeclaro, para os devidos fins, que as informações prestadas são verdadeiras.\n\nAssinatura: _______________________________\nNome Completo:",
+      idList: "683616ef6cc0c8d06e9b1dcc"
+    },
+    {
+      name: "TRANSFERIDO",
+      desc: "Olá,\n\nInformamos que seu endereço foi atualizado com sucesso. Agora, o próximo passo é entrar em contato com a VD+ (Venda Direta) da sua localidade para realizar o desbloqueio e a atualização completa do seu cadastro como Revendedor(a) O Boticário.\n\nEnquanto isso, seu cadastro ficará bloqueado temporariamente até que essa etapa seja concluída.\n\nAgradecemos pela parceria até aqui e boas vendas. 💜\n\nAtenciosamente,",
+      idList: "683616ef6cc0c8d06e9b1dcc"
+    }
+  ]
+};
+
+const boardEl = document.getElementById("board");
+
+const listsMap = {};
+for (const [listId, listName] of Object.entries(boardData.lists)) {
+  listsMap[listId] = {
+    name: listName,
+    cards: []
+  };
+}
+
+for (const card of boardData.cards) {
+  if (listsMap[card.idList]) {
+    listsMap[card.idList].cards.push(card);
+  }
+}
+
+for (const listId in listsMap) {
+  const list = listsMap[listId];
+  const listEl = document.createElement("div");
+  listEl.className = "list";
+
+  listEl.innerHTML = `<h3>${list.name}</h3>`;
+
+  list.cards.forEach(card => {
+    const cardEl = document.createElement("div");
+    cardEl.className = "card";
+    cardEl.innerHTML = `<strong>${card.name}</strong>${card.desc}`;
+
+    const button = document.createElement("button");
+    button.textContent = "Ver mais";
+    button.className = "toggle-button";
+    button.onclick = () => {
+      cardEl.classList.toggle("expanded");
+      button.textContent = cardEl.classList.contains("expanded") ? "Ver menos" : "Ver mais";
     };
 
-    const boardEl = document.getElementById("board");
+    cardEl.appendChild(button);
+    listEl.appendChild(cardEl);
+  });
 
-    const listsMap = {};
-    for (const [listId, listName] of Object.entries(boardData.lists)) {
-      listsMap[listId] = {
-        name: listName,
-        cards: []
-      };
-    }
+  boardEl.appendChild(listEl);
+}
+</script>
 
-    for (const card of boardData.cards) {
-      if (listsMap[card.idList]) {
-        listsMap[card.idList].cards.push(card);
-      }
-    }
-
-    for (const listId in listsMap) {
-      const list = listsMap[listId];
-      const listEl = document.createElement("div");
-      listEl.className = "list";
-
-      listEl.innerHTML = `<h3>${list.name}</h3>`;
-
-      list.cards.forEach(card => {
-        const cardEl = document.createElement("div");
-        cardEl.className = "card";
-        cardEl.innerHTML = `<strong>${card.name}</strong>${card.desc}`;
-
-        const button = document.createElement("button");
-        button.textContent = "Ver mais";
-        button.className = "toggle-button";
-        button.onclick = () => {
-          cardEl.classList.toggle("expanded");
-          button.textContent = cardEl.classList.contains("expanded") ? "Ver menos" : "Ver mais";
-        };
-
-        cardEl.appendChild(button);
-        listEl.appendChild(cardEl);
-      });
-
-      boardEl.appendChild(listEl);
-    }
-  </script>
 </body>
 </html>
