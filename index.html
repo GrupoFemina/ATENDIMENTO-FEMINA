@@ -54,12 +54,48 @@
       margin: 10px 0;
       border-radius: 6px;
       white-space: pre-wrap;
+      max-height: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .card.expanded {
+      overflow-y: auto;
     }
     .card strong {
       display: block;
       font-weight: bold;
       margin-bottom: 5px;
       color: #4a148c;
+    }
+    .toggle-button {
+      background-color: transparent;
+      border: none;
+      color: #6a1b9a;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      margin-top: 10px;
+      transition: color 0.3s;
+      flex-shrink: 0;
+    }
+    .toggle-button:hover {
+      color: #4a148c;
+    }
+    .toggle-button::after {
+      content: '▼';
+      margin-left: 5px;
+      font-size: 12px;
+      transition: transform 0.3s;
+    }
+    .card.expanded .toggle-button::after {
+      content: '▲';
     }
   </style>
 </head>
@@ -74,28 +110,28 @@
 
   <script>
     const boardData = {
-      "lists": {
+      lists: {
         "683615767be3d4dd7675250e": "CADASTROS - EXTERNAS",
         "683615767be3d4dd7675250f": "FORÇA DE VENDAS",
         "683616ef6cc0c8d06e9b1dcc": "ADMINISTRATIVO",
         "683615767be3d4dd7675250d": "ATENDIMENTO - LOJA",
         "estoque_coluna_001": "ESTOQUE"
       },
-      "cards": [
+      cards: [
         {
           name: "CADASTRO NOVO",
           desc: "<strong>Ativação:</strong> Via pedido.\n<strong>Pagamento:</strong> Boleto 3x.\n<strong>Entrega:</strong> endereço do RE.",
           idList: "683615767be3d4dd7675250e"
         },
         {
-          name: "AUTO REATIVAÇÃO",
+          name: "AUTO ATIVAÇÃO",
           desc: "<strong>NºPedido:</strong> XXX.XXX.XXX\n<strong>Ranking:</strong> Adicionar ao ciclo 8.",
           idList: "683615767be3d4dd7675250e"
         },
         {
-          name: "TRANSFERÊNCIA - ACOLHIMENTO",
-          desc: "<strong>ATIVAÇÃO:</strong> Pedido em Anexo\n<strong>Pagamento:</strong> Boleto 3x.\n<strong>Entrega:</strong> No endereço do RE.",
-          idList: "683615767be3d4dd7675250e"
+          name: "PEDIDO COM RETIRADA AGENDADA",
+          desc: "<strong>Nº PEDIDO:</strong> [XXX]\n<strong>CÓD. REV.:</strong> [CÓD + NOME RE]\n<strong>DATA RETIRAR:</strong> [pedido + 2 dias úteis]",
+          idList: "estoque_coluna_001"
         },
         {
           name: "ATENDIMENTO - R.E ATIVO",
@@ -106,11 +142,6 @@
           name: "RE-ATIVAÇÃO",
           desc: "<strong>Reativação:</strong> Informações do RE para nova ativação.\n<strong>Alocação:</strong> marcar.",
           idList: "683615767be3d4dd7675250f"
-        },
-        {
-          name: "PEDIDO COM RETIRADA AGENDADA",
-          desc: "<strong>Nº PEDIDO:</strong> [XXX]\n<strong>CÓD. REV.:</strong> [CÓD + NOME RE]\n<strong>DATA RETIRAR:</strong> [pedido + 2 dias úteis]",
-          idList: "estoque_coluna_001"
         },
         {
           name: "CAR - ATENDIMENTO",
@@ -161,6 +192,16 @@
         const cardEl = document.createElement("div");
         cardEl.className = "card";
         cardEl.innerHTML = `<strong>${card.name}</strong>${card.desc}`;
+
+        const button = document.createElement("button");
+        button.textContent = "Ver mais";
+        button.className = "toggle-button";
+        button.onclick = () => {
+          cardEl.classList.toggle("expanded");
+          button.textContent = cardEl.classList.contains("expanded") ? "Ver menos" : "Ver mais";
+        };
+
+        cardEl.appendChild(button);
         listEl.appendChild(cardEl);
       });
 
