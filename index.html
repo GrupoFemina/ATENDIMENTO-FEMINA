@@ -34,6 +34,7 @@
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       min-width: 300px;
+      max-width: 300px;
       max-height: 80vh;
       overflow-y: auto;
       padding: 15px;
@@ -71,28 +72,29 @@
       color: #4a148c;
     }
     .toggle-button {
-      background-color: transparent;
+      position: sticky;
+      bottom: 0;
+      align-self: flex-end;
+      background-color: #6a1b9a;
       border: none;
-      color: #6a1b9a;
+      color: white;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      width: 100%;
-      margin-top: 10px;
-      transition: color 0.3s;
-      flex-shrink: 0;
+      padding: 4px 10px;
+      border-radius: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.2s;
+      margin-top: auto;
     }
     .toggle-button:hover {
-      color: #4a148c;
+      background-color: #4a148c;
+      transform: scale(1.05);
     }
     .toggle-button::after {
       content: '▼';
-      margin-left: 5px;
-      font-size: 12px;
-      transition: transform 0.3s;
+      margin-left: 6px;
+      font-size: 10px;
     }
     .card.expanded .toggle-button::after {
       content: '▲';
@@ -186,6 +188,7 @@
       const list = listsMap[listId];
       const listEl = document.createElement("div");
       listEl.className = "list";
+
       listEl.innerHTML = `<h3>${list.name}</h3>`;
 
       list.cards.forEach(card => {
