@@ -1,3 +1,4 @@
+<!-- SUBSTITUA TODO O SEU ARQUIVO ATUAL POR ESTE CÓDIGO ABAIXO -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -146,6 +147,21 @@ const boardData = {
       idList: "estoque_coluna_001"
     },
     {
+      name: "OCORRÊNCIA DE PRODUTO",
+      desc: "<strong>CÓD. PRODUTO1:</strong>\n<strong>CÓD. PRODUTO2:</strong>\n<strong>CÓD. PRODUTO3:</strong>",
+      idList: "estoque_coluna_001"
+    },
+    {
+      name: "CANCELAMENTO DE PEDIDO",
+      desc: "<strong>CÓD/NOME:</strong>\n<strong>N° DO PEDIDO:</strong>\n<strong>MOTIVO:</strong>\n<strong>ANEXAR OS PRINTS DA SOLICITAÇÃO:</strong> (conversa com RE, entre outros)\n\n@‌mencionar gerente adm @‌marcar gerente loja @‌mencionar gerente estoque",
+      idList: "estoque_coluna_001"
+    },
+    {
+      name: "CARTA DE CORREÇÃO",
+      desc: "Solicito Carta de Correção de Endereço para o pedido, conforme os dados:\n<strong>CÓD/NOME:</strong>\n<strong>N° DO PEDIDO:</strong>\n<strong>MOTIVO:</strong> (Descrever o motivo com clareza)\n<em>Exemplo: O RE informou um endereço incorreto e solicitou a alteração para o endereço do trabalho.</em>\n\n*Print da conversa com o RE solicitando a alteração;\n*Comprovante do endereço atualizado;\n*Print da alteração do endereço no sistema GERA",
+      idList: "estoque_coluna_001"
+    },
+    {
       name: "ATENDIMENTO - R.E ATIVO",
       desc: "<strong>CÓD NOME:</strong> [INFORMAR]\n<strong>Descrição:</strong> [NECESSIDADE]\n<strong>Promotora:</strong> [@marcar]",
       idList: "683615767be3d4dd7675250f"
@@ -178,6 +194,7 @@ const boardData = {
   ]
 };
 
+// Renderização dinâmica
 const boardEl = document.getElementById("board");
 
 const listsMap = {};
