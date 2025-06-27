@@ -1,8 +1,7 @@
-<!-- SUBSTITUA TODO O SEU ARQUIVO ATUAL POR ESTE CÓDIGO ABAIXO -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>ATENDIMENTO PADRÃO FEMINA</title>
   <style>
     body {
@@ -18,7 +17,6 @@
     }
     header img {
       height: 60px;
-      vertical-align: middle;
     }
     header h1 {
       margin: 10px 0 0;
@@ -55,70 +53,86 @@
       padding: 10px;
       margin: 10px 0;
       border-radius: 6px;
-      white-space: pre-wrap;
-      max-height: 200px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-    .card.expanded {
-      overflow-y: auto;
-    }
-    .card strong {
-      display: block;
+      white-space: normal;
+      text-align: left;
       font-weight: bold;
-      margin-bottom: 5px;
-      color: #4a148c;
-    }
-    .toggle-button {
-      position: sticky;
-      bottom: 0;
-      align-self: flex-end;
-      background-color: #6a1b9a;
-      border: none;
-      color: white;
       cursor: pointer;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s, transform 0.2s;
-      margin-top: auto;
+      transition: transform 0.2s;
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: none;
     }
-    .toggle-button:hover {
+    .card:hover {
+      transform: scale(1.02);
+      background-color: #d1c4e9;
+    }
+    /* Modal */
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #modal > div {
+      background: #fff;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      padding: 20px;
+      max-height: 80vh;
+      overflow: auto;
+      position: relative;
+    }
+    #modal-content {
+      white-space: pre-wrap;
+      color: #333;
+    }
+    #modal button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #6a1b9a;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #modal button:hover {
       background-color: #4a148c;
-      transform: scale(1.05);
-    }
-    .toggle-button::after {
-      content: '▼';
-      margin-left: 6px;
-      font-size: 10px;
-    }
-    .card.expanded .toggle-button::after {
-      content: '▲';
     }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="logo.femina.png" alt="Logo Femina">
+  <img src="logo.femina.png" alt="Logo Femina" />
   <h1>ATENDIMENTO PADRÃO FEMINA</h1>
 </header>
 
 <div class="board" id="board"></div>
 
+<!-- Modal -->
+<div id="modal">
+  <div>
+    <button onclick="closeModal()">Fechar</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
 <script>
 const boardData = {
   lists: {
+    "estoque_coluna_001": "ESTOQUE",
     "683615767be3d4dd7675250e": "CADASTROS - EXTERNAS",
-    "683615767be3d4dd7675250f": "FORÇA DE VENDAS",
     "683616ef6cc0c8d06e9b1dcc": "ADMINISTRATIVO",
-    "683615767be3d4dd7675250d": "ATENDIMENTO - LOJA",
-    "estoque_coluna_001": "ESTOQUE"
+    "683615767be3d4dd7675250f": "FORÇA DE VENDAS",
+    "683615767be3d4dd7675250d": "ATENDIMENTO - LOJA"
   },
   cards: [
     {
@@ -160,43 +174,19 @@ const boardData = {
       name: "CARTA DE CORREÇÃO",
       desc: "Solicito Carta de Correção de Endereço para o pedido, conforme os dados:\n<strong>CÓD/NOME:</strong>\n<strong>N° DO PEDIDO:</strong>\n<strong>MOTIVO:</strong> (Descrever o motivo com clareza)\n<em>Exemplo: O RE informou um endereço incorreto e solicitou a alteração para o endereço do trabalho.</em>\n\n*Print da conversa com o RE solicitando a alteração;\n*Comprovante do endereço atualizado;\n*Print da alteração do endereço no sistema GERA",
       idList: "estoque_coluna_001"
-    },
-    {
-      name: "ATENDIMENTO - R.E ATIVO",
-      desc: "<strong>CÓD NOME:</strong> [INFORMAR]\n<strong>Descrição:</strong> [NECESSIDADE]\n<strong>Promotora:</strong> [@marcar]",
-      idList: "683615767be3d4dd7675250f"
-    },
-    {
-      name: "RE-ATIVAÇÃO",
-      desc: "<strong>Reativação:</strong> Informações do RE para nova ativação.\n<strong>Alocação:</strong> marcar.",
-      idList: "683615767be3d4dd7675250f"
-    },
-    {
-      name: "CAR - ATENDIMENTO",
-      desc: "Atendimento de segunda a sexta, das 8h às 20h. Sábado, das 9h às 16h.\nWhatsapp: (41) 8735-7095\nTelefone: 0800-729-9050\nLigação gratuita de qualquer lugar do país tanto de telefone fixo quanto de celular",
-      idList: "683616ef6cc0c8d06e9b1dcc"
-    },
-    {
-      name: "TRANSFERÊNCIA DE ENDEREÇO - DOCUMENTAÇÃO NECESSÁRIA",
-      desc: "*Foto do documento (RG/CNH) frente e verso,\n*Selfie com o documento junto.\n*Comprovante de endereço atualizado e em seu nome (ou foto do titular com o comprovante).\n*Carta a próprio punho informando que está residindo no endereço atual.\n*ENVIAR A DOCUMENTAÇÃO PARA O E-MAIL:\nFLORIANÓPOLIS: *admflorianopolis@grupofemina.com.br*\nJOINVILLE: *admjoinville@grupofemina.com.br*\nRIO DO SUL: *admriodosul@grupofemina.com.br*",
-      idList: "683616ef6cc0c8d06e9b1dcc"
-    },
-    {
-      name: "CARTA DE AUTODECLARAÇÃO DE ENDEREÇO",
-      desc: "Eu, [Seu Nome Completo], portador do RG nº [Seu RG] e CPF nº [Seu CPF], declaro que resido atualmente no endereço residencial:\nRua: [Nome da Rua]\nNúmero: [Número da Casa/Apartamento]\nBairro: [Nome do Bairro]\nCidade: [Nome da Cidade]\nCEP: [CEP]\nDeclaro, para os devidos fins, que as informações prestadas são verdadeiras.\n\nAssinatura: _______________________________\nNome Completo:",
-      idList: "683616ef6cc0c8d06e9b1dcc"
-    },
-    {
-      name: "TRANSFERIDO",
-      desc: "Olá,\n\nInformamos que seu endereço foi atualizado com sucesso. Agora, o próximo passo é entrar em contato com a VD+ (Venda Direta) da sua localidade para realizar o desbloqueio e a atualização completa do seu cadastro como Revendedor(a) O Boticário.\n\nEnquanto isso, seu cadastro ficará bloqueado temporariamente até que essa etapa seja concluída.\n\nAgradecemos pela parceria até aqui e boas vendas. 💜\n\nAtenciosamente,",
-      idList: "683616ef6cc0c8d06e9b1dcc"
     }
   ]
 };
 
-// Renderização dinâmica
-const boardEl = document.getElementById("board");
+function openModal(contentHtml) {
+  document.getElementById("modal-content").innerHTML = contentHtml;
+  document.getElementById("modal").style.display = "flex";
+}
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
 
+const boardEl = document.getElementById("board");
 const listsMap = {};
 for (const [listId, listName] of Object.entries(boardData.lists)) {
   listsMap[listId] = {
@@ -225,24 +215,14 @@ for (const listId of orderedListIds) {
 
   const listEl = document.createElement("div");
   listEl.className = "list";
-
   listEl.innerHTML = `<h3>${list.name}</h3>`;
 
   list.cards.forEach(card => {
-    const cardEl = document.createElement("div");
-    cardEl.className = "card";
-    cardEl.innerHTML = `<strong>${card.name}</strong>${card.desc}`;
-
-    const button = document.createElement("button");
-    button.textContent = "Ver mais";
-    button.className = "toggle-button";
-    button.onclick = () => {
-      cardEl.classList.toggle("expanded");
-      button.textContent = cardEl.classList.contains("expanded") ? "Ver menos" : "Ver mais";
-    };
-
-    cardEl.appendChild(button);
-    listEl.appendChild(cardEl);
+    const buttonEl = document.createElement("button");
+    buttonEl.className = "card";
+    buttonEl.innerHTML = `<strong>${card.name}</strong>`;
+    buttonEl.onclick = () => openModal(`<strong>${card.name}</strong><br><br>${card.desc}`);
+    listEl.appendChild(buttonEl);
   });
 
   boardEl.appendChild(listEl);
