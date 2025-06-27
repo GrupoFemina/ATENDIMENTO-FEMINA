@@ -194,8 +194,18 @@ for (const card of boardData.cards) {
   }
 }
 
-for (const listId in listsMap) {
+const orderedListIds = [
+  "estoque_coluna_001",
+  "683615767be3d4dd7675250e",
+  "683616ef6cc0c8d06e9b1dcc",
+  "683615767be3d4dd7675250f",
+  "683615767be3d4dd7675250d"
+];
+
+for (const listId of orderedListIds) {
   const list = listsMap[listId];
+  if (!list) continue;
+
   const listEl = document.createElement("div");
   listEl.className = "list";
 
