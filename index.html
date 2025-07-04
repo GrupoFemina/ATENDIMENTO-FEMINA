@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <title>Grupo Femina - Atendimento Padrão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde: #7BA98B;
+      --vinho: #6C354F;
+      --laranja: #F1865A;
+      --bordo: #731E26;
+      --fundo-card: #f9f4f6;
+      --sombra: rgba(0, 0, 0, 0.1);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, var(--verde), var(--vinho), var(--laranja), var(--bordo));
+      padding: 40px 20px 30px;
+      text-align: center;
+      color: white;
+    }
+    header h1 { font-size: 28px; margin: 10px 0 5px; }
+    header p { font-size: 16px; opacity: 0.85; }
+
+    .board {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      justify-content: center;
+    }
+    .list {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px var(--sombra);
+      width: 100%;
+      max-width: 300px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 15px;
+    }
+    .list h3 {
+      color: var(--vinho);
+      font-size: 18px;
+      margin: 0 0 10px;
+      border-bottom: 2px solid var(--vinho);
+      padding-bottom: 6px;
+    }
+    .card {
+      background-color: var(--fundo-card);
+      border-left: 5px solid var(--vinho);
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+    .card:hover {
+      transform: scale(1.03);
+      background-color: #e4d9df;
+    }
+
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #modal > div {
+      background: #fff;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      padding: 20px;
+      max-height: 80vh;
+      overflow: auto;
+      position: relative;
+    }
+    #modal-content {
+      white-space: pre-wrap;
+      color: #333;
+    }
+    #modal button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--vinho);
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #modal button:hover {
+      background-color: #50293d;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 30px 0;
+      background-color: #fafafa;
+      border-top: 1px solid #ddd;
+    }
+    footer p {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 769px) {
+      .board {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+      .list {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .board {
+        flex-direction: column;
+        align-items: center;
+      }
+      .list {
+        max-width: 90%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ATENDIMENTO PADRÃO</h1>
+    <p>Organização e excelência no atendimento da rede Femina</p>
+  </header>
+
+  <div class="board" id="board"></div>
+
+  <div id="modal">
+    <div>
+      <button onclick="closeModal()">Fechar</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <footer>
+    <img alt="Logo Femina" src="logo-png.png" style="height: 80px; object-fit: contain;" />
+    <p>© 2025 Grupo Femina | <a href="#">Política de Privacidade</a></p>
+  </footer>
+
+  <script>
+    function openModal(contentHtml) {
+      document.getElementById("modal-content").innerHTML = contentHtml;
+      document.getElementById("modal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    const boardData = {
+      lists: {
+        "estoque_coluna_001": "ESTOQUE",
+        "683615767be3d4dd7675250e": "CADASTROS - EXTERNAS",
+        "683616ef6cc0c8d06e9b1dcc": "ADMINISTRATIVO",
+        "683615767be3d4dd7675250f": "FORÇA DE VENDAS",
+        "683615767be3d4dd7675250d": "ATENDIMENTO - LOJA"
+      },
+      cards: [
+        { name: "PEDIDO COM RETIRADA AGENDADA", desc: "Detalhes do pedido agendado...", idList: "estoque_coluna_001" },
+        { name: "OCORRÊNCIA DE PRODUTO", desc: "Descrição da ocorrência...", idList: "estoque_coluna_001" },
+        { name: "CANCELAMENTO DE PEDIDO", desc: "Motivo e prints da solicitação...", idList: "estoque_coluna_001" },
+        { name: "CARTA DE CORREÇÃO", desc: "Correção de endereço...", idList: "estoque_coluna_001" },
+        { name: "AUTO REATIVAÇÃO", desc: "RE realizou pedido no app ou loja...", idList: "683615767be3d4dd7675250e" },
+        { name: "CADASTRO NOVO", desc: "Dados de novo cadastro...", idList: "683615767be3d4dd7675250e" },
+        { name: "TRANSFERÊNCIA DE CADASTRO - ACOLHIMENTO", desc: "Pedido em anexo, boleto 3x...", idList: "683615767be3d4dd7675250e" },
+        { name: "REATIVAÇÃO - CESSADO", desc: "Cadastro cessado reativado...", idList: "683615767be3d4dd7675250e" },
+        { name: "LIBERAR CADASTRO - AUTOATENDIMENTO", desc: "Status e forma de pagamento...", idList: "683615767be3d4dd7675250e" },
+        { name: "TRANSFERÊNCIA DE VD - DOCUMENTAÇÃO NECESSÁRIA", desc: "Enviar documentos por e-mail...", idList: "683616ef6cc0c8d06e9b1dcc" },
+        { name: "TRANSFERIDO", desc: "Cadastro atualizado e aguardando contato com VD+...", idList: "683616ef6cc0c8d06e9b1dcc" },
+        { name: "CARTA DE AUTODECLARAÇÃO DE ENDEREÇO", desc: "Modelo de carta com dados pessoais...", idList: "683616ef6cc0c8d06e9b1dcc" },
+        { name: "CAR - ATENDIMENTO", desc: "Contatos da central de atendimento...", idList: "683616ef6cc0c8d06e9b1dcc" },
+        { name: "ATENDIMENTO - RE ATIVO", desc: "Descrição da necessidade do RE...", idList: "683615767be3d4dd7675250f" },
+        { name: "CADASTRO REVENDEDOR - IR (INTENÇÃO DE REVENDA)", desc: "Formulário de intenção...", idList: "683615767be3d4dd7675250f" },
+        { name: "ATENDIMENTO - REATIVAÇÃO", desc: "RE deseja reativar cadastro...", idList: "683615767be3d4dd7675250f" },
+        { name: "IDENTIFICAÇÃO PARA COMPRAR", desc: "Documento obrigatório no caixa...", idList: "683615767be3d4dd7675250d" },
+        { name: "ARMÁRIO - GUARDA VOLUME", desc: "Orientações sobre bolsas/mochilas...", idList: "683615767be3d4dd7675250d" },
+        { name: "ACESSO RESTRITO", desc: "Acesso permitido apenas ao RE...", idList: "683615767be3d4dd7675250d" }
+      ]
+    };
+
+    const boardEl = document.getElementById("board");
+    const listsMap = {};
+    for (const [listId, listName] of Object.entries(boardData.lists)) {
+      listsMap[listId] = { name: listName, cards: [] };
+    }
+    for (const card of boardData.cards) {
+      if (listsMap[card.idList]) {
+        listsMap[card.idList].cards.push(card);
+      }
+    }
+    const orderedListIds = [
+      "estoque_coluna_001",
+      "683615767be3d4dd7675250e",
+      "683616ef6cc0c8d06e9b1dcc",
+      "683615767be3d4dd7675250f",
+      "683615767be3d4dd7675250d"
+    ];
+    for (const listId of orderedListIds) {
+      const list = listsMap[listId];
+      if (!list) continue;
+      const listEl = document.createElement("div");
+      listEl.className = "list";
+      listEl.innerHTML = `<h3>${list.name}</h3>`;
+      list.cards.forEach(card => {
+        const buttonEl = document.createElement("button");
+        buttonEl.className = "card";
+        buttonEl.innerHTML = `<strong>${card.name}</strong>`;
+        buttonEl.onclick = () => openModal(`<strong>${card.name}</strong><br><br>${card.desc}`);
+        listEl.appendChild(buttonEl);
+      });
+      boardEl.appendChild(listEl);
+    }
+  </script>
+</body>
+</html>
